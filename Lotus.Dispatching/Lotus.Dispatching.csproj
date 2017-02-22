@@ -5,10 +5,11 @@
     <Version>1.0.0-alpha</Version>
     <Company />
     <Product />
-    <Description>An declarative IoC library that efficiently dispatches values and commands to subscribing modules, offering boilerplate-free event handling.</Description>
+    <Description>A declarative IoC library that efficiently dispatches values and commands to subscribing modules, offering boilerplate-free event handling.</Description>
     <Authors />
     <PackageTags>dispatch dispatching dispatcher event ioc</PackageTags>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <PackageProjectUrl>https://github.com/Mirrawrs/Lotus/</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.ValueTuple" Version="4.3.0" />

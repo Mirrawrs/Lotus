@@ -2,6 +2,13 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;net462</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.0-alpha</Version>
+    <Authors />
+    <Company />
+    <Product />
+    <Description>Easily define a protocol and efficiently serialize and deserialize objects without boilerplate code.</Description>
+    <PackageProjectUrl>https://github.com/Mirrawrs/Lotus/</PackageProjectUrl>
+    <PackageTags>serialization deserialization protocol agnostic declarative</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.ValueTuple" Version="4.3.0" />

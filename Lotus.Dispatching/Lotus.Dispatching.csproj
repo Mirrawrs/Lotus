@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.6;net462</TargetFrameworks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.0-alpha</Version>
+    <Company />
+    <Product />
+    <Description>An declarative IoC library that efficiently dispatches values and commands to subscribing modules, offering boilerplate-free event handling.</Description>
+    <Authors />
+    <PackageTags>dispatch dispatching dispatcher event ioc</PackageTags>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.3.0" />
+  </ItemGroup>
+</Project>

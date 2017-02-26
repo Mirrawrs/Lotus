@@ -62,8 +62,7 @@ namespace Lotus.Dispatching
 
             bool IsLevelSufficient()
             {
-                if (command.Level == null) return true;
-                var commandLevel = command.Level.Value;
+                var commandLevel = command.Level;
                 var levelComparisonType = configuration.LevelComparisonType;
                 switch (levelComparisonType)
                 {

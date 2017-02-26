@@ -17,7 +17,7 @@ namespace Lotus.Dispatching.Metadata
 
     public interface ICommandMetadata : IListenerMetadata
     {
-        ulong? Level { get; }
+        ulong Level { get; }
     }
 
     public interface ISignatureInfo

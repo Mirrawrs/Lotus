@@ -14,7 +14,7 @@ namespace Lotus.Dispatching
     {
         private readonly ConverterDictionary converters;
 
-        private CommandInfo(MethodInfo method, ConverterDictionary converters, ulong? level)
+        private CommandInfo(MethodInfo method, ConverterDictionary converters, ulong level)
         {
             this.converters = converters;
             (Name, Description) = method.GetDescriptiveMetadata();
@@ -25,7 +25,7 @@ namespace Lotus.Dispatching
         public string Name { get; }
         public string Description { get; }
         public ISignatureInfo Signature { get; }
-        public ulong? Level { get; }
+        public ulong Level { get; }
 
         public static IEnumerable<CommandInfo> GetCommands(Type type, ConverterDictionary converters)
             => from method in type.GetRuntimeMethods()

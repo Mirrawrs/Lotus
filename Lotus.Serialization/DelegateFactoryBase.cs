@@ -79,7 +79,8 @@ namespace Lotus.Serialization
             var type = parameters.Type;
             return TryGetDirective(parameters, out var directiveInfo)
                 ? CreatePrimitiveDelegate(type, directiveInfo.method, directiveInfo.explicitlyConvert)
-                : type.GetRuntimeProperties().Any(property => property.IsDefined(typeof(SerializeAttribute)))
+                : type.GetRuntimeProperties().Any(property => property.IsDefined(typeof(SerializeAttribute))) ||
+                  type.GetTypeInfo().IsDefined(typeof(ComplexAttribute))
                     ? CreateComplexDelegate(parameters)
                     : throw new Exception($"No directive found for type: {type}");
         }

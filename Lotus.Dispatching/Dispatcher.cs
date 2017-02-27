@@ -12,7 +12,6 @@ namespace Lotus.Dispatching
     {
         private readonly ILookup<string, (CommandInfo command, object module)> commandsByName;
         private readonly DispatcherConfiguration configuration;
-        private readonly IEnumerable<IDisposable> disposableModules;
         private readonly ILookup<Type, (ListenerInfo, object)> listenersByParameterType;
 
         private readonly IDictionary<Type, List<(ListenerInfo, object)>> transientListenersByParameterType =
@@ -33,9 +32,7 @@ namespace Lotus.Dispatching
             var modules = moduleInfos
                 .Select(info => (instance: Activator.CreateInstance(info.Type), info: info))
                 .ToList();
-            disposableModules = modules
-                .Select(module => module.instance)
-                .OfType<IDisposable>();
+            Modules = modules.Select(module => module.instance);
             commandsByName = modules
                 .SelectMany(m => m.info.CommandInfos, (m, command) => (command: command, instance: m.instance))
                 .ToLookup(context => context.command.Name, this.configuration.CommandsComparer);
@@ -45,10 +42,11 @@ namespace Lotus.Dispatching
         }
 
         public IReadOnlyCollection<IModuleMetadata> ModulesMetadata { get; }
+        public IEnumerable<object> Modules { get; }
 
         public void Dispose()
         {
-            foreach (var module in disposableModules) module.Dispose();
+            foreach (var module in Modules.OfType<IDisposable>()) module.Dispose();
         }
 
         public Task Execute(
@@ -125,5 +123,7 @@ namespace Lotus.Dispatching
             task.ContinueWith(_ => listeners.Remove(context), TaskContinuationOptions.ExecuteSynchronously);
             return task;
         }
+
+        public TModule Get<TModule>() => Modules.OfType<TModule>().SingleOrDefault();
     }
 }

@@ -2,15 +2,15 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;net462</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.3-alpha</Version>
+    <Version>1.0.4-alpha</Version>
     <Company />
     <Product />
     <Description>A declarative IoC library that efficiently dispatches values and commands to subscribing modules, offering boilerplate-free event handling.</Description>
     <Authors />
     <PackageTags>dispatch dispatching dispatcher event ioc</PackageTags>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
     <PackageProjectUrl>https://github.com/Mirrawrs/Lotus/</PackageProjectUrl>
-    <FileVersion>1.0.3.0</FileVersion>
+    <FileVersion>1.0.4.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.ValueTuple" Version="4.3.0" />

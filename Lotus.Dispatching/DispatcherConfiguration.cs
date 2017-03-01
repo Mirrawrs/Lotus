@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Lotus.Dispatching
 {
@@ -10,6 +9,6 @@ namespace Lotus.Dispatching
         public Type ConverterType { get; set; }
         public bool ExactTypeOnlyNotifications { get; set; }
         public LevelComparisonType LevelComparisonType { get; set; }
-        public IEnumerable<Type> ModuleTypes { get; set; } = Enumerable.Empty<Type>();
+        public ISet<Type> ModuleTypes { get; set; } = new HashSet<Type>();
     }
 }

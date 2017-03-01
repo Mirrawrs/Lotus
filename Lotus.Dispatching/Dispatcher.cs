@@ -103,7 +103,7 @@ namespace Lotus.Dispatching
         }
 
         public Task<TValue> Next<TValue>(
-            Predicate<TValue> predicate = null,
+            Predicate<TValue> predicate,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var tcs = new TaskCompletionSource<TValue>();
@@ -123,6 +123,9 @@ namespace Lotus.Dispatching
             task.ContinueWith(_ => listeners.Remove(context), TaskContinuationOptions.ExecuteSynchronously);
             return task;
         }
+
+        public Task<TValue> Next<TValue>(CancellationToken cancellationToken = default(CancellationToken))
+            => Next<TValue>(null, cancellationToken);
 
         public TModule Get<TModule>() => Modules.OfType<TModule>().SingleOrDefault();
     }

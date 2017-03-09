@@ -7,7 +7,7 @@ namespace Lotus.Serialization
 {
     public class SerializerMediator
     {
-        private static readonly ConcurrentDictionary<Type, (Ser, Des)> CachedMappers = new ConcurrentDictionary<Type, (Ser, Des)>();
+        private static readonly ConcurrentDictionary<Type, (Ser, Des)> CachedFactories = new ConcurrentDictionary<Type, (Ser, Des)>();
 
         private readonly (Ser s, Des d) mappers;
         private readonly object serializer;
@@ -16,10 +16,10 @@ namespace Lotus.Serialization
         {
             this.serializer = serializer;
             var serializerType = this.serializer.GetType();
-            if (!CachedMappers.TryGetValue(serializerType, out mappers))
+            if (!CachedFactories.TryGetValue(serializerType, out mappers))
             {
                 mappers = (new Ser(serializerType), new Des(serializerType));
-                CachedMappers[serializerType] = mappers;
+                CachedFactories[serializerType] = mappers;
             }
         }
 

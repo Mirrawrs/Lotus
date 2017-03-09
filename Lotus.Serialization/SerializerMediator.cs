@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using Ser = Lotus.Serialization.SerializationDelegateFactory;
 using Des = Lotus.Serialization.DeserializationDelegateFactory;
 
@@ -7,7 +7,7 @@ namespace Lotus.Serialization
 {
     public class SerializerMediator
     {
-        private static readonly Dictionary<Type, (Ser, Des)> CachedMappers = new Dictionary<Type, (Ser, Des)>();
+        private static readonly ConcurrentDictionary<Type, (Ser, Des)> CachedMappers = new ConcurrentDictionary<Type, (Ser, Des)>();
 
         private readonly (Ser s, Des d) mappers;
         private readonly object serializer;
